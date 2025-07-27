@@ -1,0 +1,9 @@
+from domain.models.object import Object
+
+
+class ObjectStore:
+    def __init__(): ...
+
+    def get_object(object_key: str) -> Object: ...
+
+    def store_object(object: Object) -> None: ...

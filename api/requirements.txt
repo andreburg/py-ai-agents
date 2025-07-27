@@ -1,0 +1,12 @@
+fastapi
+uvicorn
+pydantic
+pydantic_ai
+sqlalchemy
+pgvector
+python-dotenv
+ruff
+mypy
+InstructorEmbedding
+pypdf
+python-docx
