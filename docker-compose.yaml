@@ -1,0 +1,39 @@
+services:
+    
+  tiny_db:
+    image: ankane/pgvector:latest
+    container_name: tiny_db
+    restart: always
+    env_file:
+      - ./db/.env
+    volumes:
+      - tiny_db_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+
+  tiny_flyway:
+    image: flyway/flyway
+    depends_on:
+      - tiny_db
+    env_file:
+      - ./db/.env
+    volumes:
+      - ./db/migrations:/flyway/migrations
+      - ./db/conf:/flyway/conf
+    command: clean migrate
+
+  tiny_api:
+    build:
+      context: ./api
+      dockerfile: Dockerfile
+    container_name: tiny_api
+    restart: always
+    env_file:
+      - ./api/.env
+    depends_on:
+      - tiny_db
+    ports:
+      - "8000:8000"
+
+volumes:
+  tiny_db_data:
