@@ -1,0 +1,7 @@
+# SECRETS
+.env
+
+# PYTHON
+.venv
+.mypy_cache
+__pycache__
