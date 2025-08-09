@@ -2,4 +2,4 @@ mcp[cli]
 python-dotenv
 pydantic
 asyncpg
-openai
+langchain_ollama

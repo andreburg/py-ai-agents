@@ -9,3 +9,4 @@ python-docx
 asyncio
 langchain_text_splitters 
 openai
+langchain_ollama

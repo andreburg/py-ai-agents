@@ -1,15 +1,12 @@
-from openai import AsyncOpenAI
+from langchain_ollama import OllamaEmbeddings
 
 
 class EmbeddingService:
     def __init__(self):
-        self._model = AsyncOpenAI()
+        self._model = OllamaEmbeddings(model="nomic-embed-text")
 
     async def get_embedding(self, text: str) -> str:
-        response = await self._model.embeddings.create(
-            input=text, model="text-embedding-3-small"
-        )
-        embedding = response.data[0].embedding
+        embedding = await self._model.aembed_query(text)
         return self.stringify_embedding(embedding)
 
     def stringify_embedding(self, embedding: list[float]) -> str:
