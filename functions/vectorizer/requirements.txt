@@ -1,0 +1,11 @@
+pydantic
+asyncpg
+pgvector
+python-dotenv
+ruff
+mypy
+pdfplumber
+python-docx
+asyncio
+langchain_text_splitters 
+openai
