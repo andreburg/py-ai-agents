@@ -1,9 +1,0 @@
-from domain.models.object import Object
-
-
-class ObjectService:
-    def __init__(): ...
-
-    def get_object(object_key: str): ...
-
-    def create_object(object: Object): ...
