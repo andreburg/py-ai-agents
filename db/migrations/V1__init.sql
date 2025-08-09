@@ -1,19 +1,19 @@
+CREATE EXTENSION IF NOT EXISTS pgcrypto;
 CREATE EXTENSION IF NOT EXISTS vector;
 
 CREATE TABLE file (
-    id SERIAL PRIMARY KEY,
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
     file_name TEXT NOT NULL,
-    mime_type TEXT,
-    object_key TEXT NOT NULL,
-    metadata JSONB,
+    bucket VARCHAR(50) NOT NULL,
+    object_key VARCHAR(255) NOT NULL,
     created_at TIMESTAMPTZ DEFAULT now()
 );
 
 CREATE TABLE chunk (
-    id SERIAL PRIMARY KEY,
-    file_id INTEGER NOT NULL REFERENCES file(id) ON DELETE CASCADE,
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    file_id UUID NOT NULL REFERENCES file(id) ON DELETE CASCADE,
     chunk_index INTEGER NOT NULL,
-    chunk_text TEXT NOT NULL,
+    content TEXT NOT NULL,
     embedding vector(1536) NOT NULL,
     created_at TIMESTAMPTZ DEFAULT now()
 );
