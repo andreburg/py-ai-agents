@@ -22,18 +22,21 @@ services:
       - ./db/conf:/flyway/conf
     command: clean migrate
 
-  tiny_api:
-    build:
-      context: ./api
-      dockerfile: Dockerfile
-    container_name: tiny_api
-    restart: always
-    env_file:
-      - ./api/.env
-    depends_on:
-      - tiny_db
-    ports:
-      - "8000:8000"
+  # tiny_mcp:
+  #   build:
+  #     context: ./mcp
+  #     dockerfile: Dockerfile
+  #   container_name: tiny_mcp
+  #   restart: always
+  #   env_file:
+  #     - ./mcp/.env
+  #   depends_on:
+  #     - tiny_flyway
+  #   ports:
+  #     - "8000:8000"
+  #   volumes:
+  #     - ./mcp:/app
+  #     - /app/__pycache__
 
 volumes:
   tiny_db_data:
