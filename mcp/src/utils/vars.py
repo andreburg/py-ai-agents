@@ -18,5 +18,4 @@ MCP_NAME = get_environment_variable("MCP_NAME")
 MCP_PORT = int(get_environment_variable("MCP_PORT"))
 MCP_HOST = get_environment_variable("MCP_HOST")
 
-OPENAI_API_KEY = get_environment_variable("OPENAI_API_KEY")
 DATABASE_URL = get_environment_variable("DATABASE_URL")

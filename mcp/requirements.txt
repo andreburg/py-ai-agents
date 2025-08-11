@@ -1,4 +1,4 @@
-mcp[cli]
+mcp
 python-dotenv
 pydantic
 asyncpg
